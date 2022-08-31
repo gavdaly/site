@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Game } from "../components/Game";
+import { Search } from "../components/Search";
+---
+
+<Layout>
+    <h2>
+        We could not find the page you where looking for, search below or play
+        [Game]
+    </h2>
+    <Search client:idle />
+    <Game client:idle />
+</Layout>
