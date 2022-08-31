@@ -5,15 +5,16 @@ let path = new URL(Astro.url).pathname;
 let current = path === href ? "true" : "false";
 ---
 
-<a href={href} data-current={current} rel={rel}>
+<a class="text-l" href={href} data-current={current} rel={rel}>
     <slot />
 </a>
 
 <style scoped>
     a:any-link {
-        text-decoration: none;
     }
     [data-current="true"] {
-        border-bottom: 2px solid yellowgreen;
+        text-decoration: underline;
+        text-decoration-color: yellowgreen;
+        text-decoration-thickness: 2px;
     }
 </style>

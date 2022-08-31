@@ -27,37 +27,43 @@ import NavLink from "../components/NavLink.astro";
 		<div id="content">
 			<slot />
 		</div>
-		<footer id="footer">
-			<nav>
+		<footer class="flex justify-between" id="footer">
+			<nav class="flex flex-col">
 				<NavLink href="/contact">contact</NavLink>
 				<NavLink href="/search">search</NavLink>
 			</nav>
-			<aside class="social-links"></aside>
-		</footer>
-		<style>
-			body {
-				display: grid;
-				grid-template-areas:
-					"header nav"
-					"content content"
-					"footer footer";
-			}
-			#logo {
-				width: 80px;
-			}
-			#header {
-				grid-area: header;
-			}
-			#navigation {
-				grid-area: nav;
-			}
-			#content {
-				grid-area: content;
-			}
-			#footer {
-				grid-area: footer;
-				background: var(--color-footer-background);
-			}
-		</style>
+			<aside class="flex flex-col social-links">
+				<a href="https://twitter.com/">twitter icon</a>
+				<a href="https://github.com/">github icon</a>
+			</aside>
+		</footer><a href="https://github.com/" < aside>
+			<style>
+				body {
+					display: grid;
+					grid-template-areas:
+						"header nav"
+						"content content"
+						"footer footer";
+				}
+				#logo {
+					width: 80px;
+				}
+				#header {
+					grid-area: header;
+				}
+				#navigation {
+					grid-area: nav;
+					display: flex;
+					gap: 3ch;
+				}
+				#content {
+					grid-area: content;
+				}
+				#footer {
+					grid-area: footer;
+					background: var(--color-footer-background);
+				}
+			</style>
+		</a>
 	</body>
 </html>
