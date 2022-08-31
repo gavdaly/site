@@ -1,11 +1,11 @@
 ---
-let { href } = Astro.props;
+let { href, rel } = Astro.props;
 let path = new URL(Astro.url).pathname;
 
 let current = path === href ? "true" : "false";
 ---
 
-<a href={href} data-current={current}>
+<a href={href} data-current={current} rel={rel}>
     <slot />
 </a>
 

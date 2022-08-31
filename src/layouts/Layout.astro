@@ -14,15 +14,15 @@ import NavLink from "../components/NavLink.astro";
 	</head>
 	<body>
 		<header id="header">
-			<a href="/">
+			<a href="/" rel="prefetch">
 				<img id="logo" src="/favicon.svg" alt="Logo" />
 				<h1 class="visually-hidden">GavDev</h1>
 			</a>
 		</header>
 		<nav role="navigation" id="navigation">
-			<NavLink href="/about">about</NavLink>
-			<NavLink href="/projects">projects</NavLink>
-			<NavLink href="/garden">garden</NavLink>
+			<NavLink href="/about" rel="prefetch">about</NavLink>
+			<NavLink href="/projects" rel="prefetch">projects</NavLink>
+			<NavLink href="/garden" rel="prefetch">garden</NavLink>
 		</nav>
 		<div id="content">
 			<slot />
