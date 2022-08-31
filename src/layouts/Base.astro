@@ -1,5 +1,5 @@
 ---
-import Nav from "../components/Nav.astro";
+import NavLink from "../components/NavLink.astro";
 
 interface Props {
     title: string;
@@ -21,8 +21,20 @@ let { title, description } = Astro.props;
         <title>{title}</title>
     </head>
     <body>
-        <Nav />
+        <header>
+            <h1>GavDev</h1>
+        </header>
+        <nav>
+            <NavLink href="/">home</NavLink>
+            <NavLink href="/about">about</NavLink>
+            <NavLink href="/projects">projects</NavLink>
+            <NavLink href="/garden">garden</NavLink>
+            <NavLink href="/contact">contact</NavLink>
+        </nav>
         <slot />
+        <footer>
+            <aside class="social-links"></aside>
+        </footer>
         <style>
             :root {
                 --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
