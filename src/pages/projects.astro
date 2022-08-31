@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const projects = (await Astro.glob("./projects/**/*{.md,mdx}"))
+    .filter(({ frontmatter }) => !!frontmatter.publishDate)
+    .sort(
+        (a, b) =>
+            new Date(b.frontmatter.publishDate).valueOf() -
+            new Date(a.frontmatter.publishDate).valueOf()
+    );
+---
+
+<Layout title="Projects">
+    <h1 class="title">Projects</h1>
+    <ul>
+        {
+            projects.map((project) => (
+                <li>
+                    <a href={project.url}>{project.frontmatter.title}</a>
+                    <span>{project.frontmatter.publishDate}</span>
+                </li>
+            ))
+        }
+    </ul>
+</Layout>

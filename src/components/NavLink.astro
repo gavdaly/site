@@ -1,0 +1,24 @@
+---
+let { href } = Astro.props;
+let path = new URL(Astro.url).pathname;
+
+let current = path === href ? "true" : "false";
+---
+
+<a href={href} data-current={current}>
+    <slot />
+</a>
+
+<style scoped>
+    a,
+    a:visited,
+    a:hover,
+    a:active,
+    a:any-link {
+        text-decoration: none;
+        color: black;
+    }
+    [data-current="true"] {
+        background: yellow;
+    }
+</style>
