@@ -1,7 +1,12 @@
 ---
 import Base from "./Base.astro";
+
+const { frontmatter } = Astro.props;
 ---
 
-<Base>
+<Base title={`${frontmatter.title} | GavDev Garden`}>
+    <Fragment slot="head">
+        <meta name="description" content={frontmatter.description} />
+    </Fragment>
     <slot />
 </Base>
