@@ -1,7 +1,11 @@
 ---
+import SocialTags from "../components/SocialTags.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="GavDev">
-	<h1>Welcome to <span class="text-gradient">Astro</span></h1>
+<Layout>
+	<Fragment slot="head">
+		<SocialTags description="" image="" title="GavDev" />
+	</Fragment>
+	<h1>Welcome to GavDev</h1>
 </Layout>

@@ -1,9 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { Contact } from "../components/Contact";
+import SocialTags from "../components/SocialTags.astro";
 ---
 
-<Layout title="Contact | GavDev">
+<Layout>
+    <Fragment slot="head">
+        <SocialTags description="" image="" title="Contact | GavDev" />
+    </Fragment>
     <h1>Contact</h1>
     <Contact client:idle />
 </Layout>

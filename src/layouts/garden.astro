@@ -1,12 +1,17 @@
 ---
-import Base from "./Base.astro";
+import SocialTags from "../components/SocialTags.astro";
+import Layout from "./Layout.astro";
 
 const { frontmatter } = Astro.props;
 ---
 
-<Base title={`${frontmatter.title} | GavDev Garden`}>
+<Layout>
     <Fragment slot="head">
-        <meta name="description" content={frontmatter.description} />
+        <SocialTags
+            description={frontmatter.description}
+            image={frontmatter.image}
+            title={`${frontmatter.title} | GavDev Garden`}
+        />
     </Fragment>
     <slot />
-</Base>
+</Layout>

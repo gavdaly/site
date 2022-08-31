@@ -1,4 +1,5 @@
 ---
+import SocialTags from "../components/SocialTags.astro";
 import Layout from "../layouts/Layout.astro";
 
 const projects = (await Astro.glob("./projects/**/*{.md,mdx}"))
@@ -10,7 +11,10 @@ const projects = (await Astro.glob("./projects/**/*{.md,mdx}"))
     );
 ---
 
-<Layout title="Projects List | GavDev">
+<Layout>
+    <Fragment slot="head">
+        <SocialTags title="Projects List | GavDev" description="" image="" />
+    </Fragment>
     <h1 class="title">Projects</h1>
     <ul>
         {

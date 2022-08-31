@@ -1,7 +1,11 @@
 ---
+import SocialTags from "../components/SocialTags.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="About | GavDev">
+<Layout>
+    <Fragment slot="head">
+        <SocialTags description="" image="" title="About | GavDev" />
+    </Fragment>
     <h1>About</h1>
 </Layout>

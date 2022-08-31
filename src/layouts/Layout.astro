@@ -1,17 +1,62 @@
 ---
-import Base from "./Base.astro";
-
-export interface Props {
-	title: string;
-	description?: string;
-}
-
-const { title, description } = Astro.props as Props;
+import NavLink from "../components/NavLink.astro";
 ---
 
-<Base title={title} description={description}>
-	<Fragment slot="head">
-		<meta name="keywords" content="" />
-	</Fragment>
-	<slot />
-</Base>
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="stylesheet" href="/styles/global.css" />
+		<meta name="generator" content={Astro.generator} />
+		<slot name="head" />
+	</head>
+	<body>
+		<header id="header">
+			<a href="/">
+				<img id="logo" src="/favicon.svg" alt="Logo" />
+				<h1 class="visually-hidden">GavDev</h1>
+			</a>
+		</header>
+		<nav role="navigation" id="navigation">
+			<NavLink href="/about">about</NavLink>
+			<NavLink href="/projects">projects</NavLink>
+			<NavLink href="/garden">garden</NavLink>
+		</nav>
+		<div id="content">
+			<slot />
+		</div>
+		<footer id="footer">
+			<nav>
+				<NavLink href="/contact">contact</NavLink>
+			</nav>
+			<aside class="social-links"></aside>
+		</footer>
+		<style>
+			body {
+				display: grid;
+				grid-template-areas:
+					"header nav"
+					"content content"
+					"footer footer";
+			}
+			#logo {
+				width: 80px;
+			}
+			#header {
+				grid-area: header;
+			}
+			#navigation {
+				grid-area: nav;
+			}
+			#content {
+				grid-area: content;
+			}
+			#footer {
+				grid-area: footer;
+				background: var(--color-footer-background);
+			}
+		</style>
+	</body>
+</html>

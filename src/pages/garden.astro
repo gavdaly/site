@@ -1,4 +1,5 @@
 ---
+import SocialTags from "../components/SocialTags.astro";
 import Layout from "../layouts/Layout.astro";
 
 const garden = (await Astro.glob("./garden/**/*{.md,mdx}"))
@@ -10,7 +11,10 @@ const garden = (await Astro.glob("./garden/**/*{.md,mdx}"))
     );
 ---
 
-<Layout title="Garden | GavDev">
+<Layout>
+    <Fragment slot="head">
+        <SocialTags description="" title="Garden | GavDev" image="" />
+    </Fragment>
     <ul>
         {
             garden.map((article) => (
