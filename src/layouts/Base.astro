@@ -13,62 +13,58 @@ let { title, description } = Astro.props;
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="stylesheet" href="/styles/global.css" />
         <meta name="generator" content={Astro.generator} />
         {description && <meta name="description" content={description} />}
         <slot name="head" />
         <title>{title}</title>
     </head>
     <body>
-        <header>
-            <h1>GavDev</h1>
+        <header id="header">
+            <a href="/">
+                <img id="logo" src="/favicon.svg" alt="Logo" />
+                <h1 class="visually-hidden">GavDev</h1>
+            </a>
         </header>
-        <nav>
-            <NavLink href="/">home</NavLink>
+        <nav role="navigation" id="navigation">
             <NavLink href="/about">about</NavLink>
             <NavLink href="/projects">projects</NavLink>
             <NavLink href="/garden">garden</NavLink>
-            <NavLink href="/contact">contact</NavLink>
         </nav>
-        <slot />
-        <footer>
+        <div id="content">
+            <slot />
+        </div>
+        <footer id="footer">
+            <nav>
+                <NavLink href="/contact">contact</NavLink>
+            </nav>
             <aside class="social-links"></aside>
         </footer>
         <style>
-            :root {
-                --font-size-base: clamp(1rem, 0.34vw + 0.91rem, 1.19rem);
-                --font-size-lg: clamp(1.2rem, 0.7vw + 1.2rem, 1.5rem);
-                --font-size-xl: clamp(2.44rem, 2.38vw + 1.85rem, 3.75rem);
-
-                --color-text: hsl(12, 5%, 4%);
-                --color-bg: hsl(10, 21%, 95%);
-                --color-border: hsl(17, 24%, 90%);
-            }
-
-            html {
-                font-family: system-ui, sans-serif;
-                font-size: var(--font-size-base);
-                color: var(--color-text);
-                background-color: var(--color-bg);
-            }
-
             body {
-                margin: 0;
+                display: grid;
+                grid-template-areas:
+                    "header nav"
+                    "content content"
+                    "footer footer";
             }
-
-            :global(h1) {
-                font-size: var(--font-size-xl);
+            #logo {
+                width: 80px;
             }
-
-            :global(h2) {
-                font-size: var(--font-size-lg);
+            #header {
+                grid-area: header;
             }
-
-            :global(code) {
-                font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-                    DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-                    monospace;
+            #navigation {
+                grid-area: nav;
+            }
+            #content {
+                grid-area: content;
+            }
+            #footer {
+                grid-area: footer;
+                background: var(--color-footer-background);
             }
         </style>
     </body>
