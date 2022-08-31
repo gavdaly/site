@@ -13,6 +13,7 @@
     "@astrojs/prefetch": "^0.0.7",
     "@astrojs/react": "^1.1.1",
     "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "astro": "^1.1.2",
