@@ -32,38 +32,31 @@ import NavLink from "../components/NavLink.astro";
 				<NavLink href="/contact">contact</NavLink>
 				<NavLink href="/search">search</NavLink>
 			</nav>
-			<aside class="flex flex-col social-links">
-				<a href="https://twitter.com/">twitter icon</a>
-				<a href="https://github.com/">github icon</a>
-			</aside>
-		</footer><a href="https://github.com/" < aside>
-			<style>
-				body {
-					display: grid;
-					grid-template-areas:
-						"header nav"
-						"content content"
-						"footer footer";
-				}
-				#logo {
-					width: 80px;
-				}
-				#header {
-					grid-area: header;
-				}
-				#navigation {
-					grid-area: nav;
-					display: flex;
-					gap: 3ch;
-				}
-				#content {
-					grid-area: content;
-				}
-				#footer {
-					grid-area: footer;
-					background: var(--color-footer-background);
-				}
-			</style>
-		</a>
+		</footer>
+		<style>
+			body {
+				display: grid;
+				grid-template-areas:
+					"header nav"
+					"content content"
+					"footer footer";
+			}
+			#logo {
+				width: 80px;
+			}
+			#header {
+				grid-area: header;
+			}
+			#navigation {
+				grid-area: nav;
+			}
+			#content {
+				grid-area: content;
+			}
+			#footer {
+				grid-area: footer;
+				background: var(--color-footer-background);
+			}
+		</style>
 	</body>
 </html>
