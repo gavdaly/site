@@ -1,4 +1,6 @@
+use serde::{Deserialize, Serialize};
 use serde_json::json;
+use uuid::Uuid;
 use worker::*;
 
 mod utils;
@@ -46,10 +48,24 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 
             Response::error("Bad Request", 400)
         })
+        .post_async("/contact", |mut req, ctx| async move {
+            let form = req.json::<Contact>().await?;
+            let store = ctx.kv("gavdev_contact")?;
+            let uuid = Uuid::new_v4().to_string();
+            store.put(&uuid, &form)?;
+            Response::from_json(&json!(form))
+        })
         .get("/worker-version", |_, ctx| {
             let version = ctx.var("WORKERS_RS_VERSION")?.to_string();
             Response::ok(version)
         })
         .run(req, env)
         .await
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+struct Contact {
+    name: String,
+    email: String,
+    message: String,
 }
