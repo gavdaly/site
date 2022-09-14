@@ -9,6 +9,7 @@ specifiers:
   '@types/react': ^18.0.18
   '@types/react-dom': ^18.0.6
   astro: ^1.1.8
+  open-props: ^1.4.14
   postcss: ^8.4.16
   postcss-preset-env: ^7.8.1
   react: ^18.2.0
@@ -23,6 +24,7 @@ devDependencies:
   '@types/react': 18.0.18
   '@types/react-dom': 18.0.6
   astro: 1.1.8
+  open-props: 1.4.14
   postcss: 8.4.16
   postcss-preset-env: 7.8.1_postcss@8.4.16
   react: 18.2.0
@@ -2706,6 +2708,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       mimic-fn: 4.0.0
+    dev: true
+
+  /open-props/1.4.14:
+    resolution: {integrity: sha512-EkTUczMzty8mIvnWGpC41ELIejARiuljsXTEz7YDRKJn5dJ1/njsLTpNhn2rsM3JSW95p4G94ojsgzxbaiFmNA==}
     dev: true
 
   /open/8.4.0:
