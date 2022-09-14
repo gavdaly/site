@@ -55,6 +55,31 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
             store.put(&uuid, &form)?;
             Response::from_json(&json!(form))
         })
+        .post_async("/webmention", |mut req, ctx| async move {
+            let store = ctx.kv("webmention")?;
+            let uuid = Uuid::new_v4().to_string();
+            let data = req.form_data().await?;
+            let target = data.get("target");
+            let source = data.get("source");
+
+            if let Some(target) = target {
+                if let Some(source) = source {
+                    let (tar, sou) = match (target, source) {
+                        (FormEntry::Field(t), FormEntry::Field(s)) => (t, s),
+                        _ => return Err(worker::Error::BadEncoding),
+                    };
+                    store.put(
+                        &uuid,
+                        Webmention {
+                            target: tar,
+                            source: sou,
+                        },
+                    )?;
+                }
+            }
+
+            Response::ok("")
+        })
         .get("/worker-version", |_, ctx| {
             let version = ctx.var("WORKERS_RS_VERSION")?.to_string();
             Response::ok(version)
@@ -63,9 +88,15 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
         .await
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Serialize, Deserialize)]
 struct Contact {
     name: String,
     email: String,
     message: String,
+}
+
+#[derive(Serialize, Deserialize)]
+struct Webmention {
+    source: String,
+    target: String,
 }
